@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import promise from 'redux-promise';
 
 
 import reducers from './reducers';
 import BlogIndex from './components/blog_index';
+import BlogNew from './components/blog_new';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
@@ -16,9 +17,11 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <h1>React Blog</h1>
-        <Route path='/' component={BlogIndex} />
-        {/* {<Route path='/blog/:id' component={BlogDetail} />} */}
-        {/* <Route path='/blog/new' component={BlogNew} /> */}
+        <Switch>
+          <Route path='/blog/new' component={BlogNew} />
+          <Route path='/' component={BlogIndex} />
+          {/* {<Route path='/blog/:id' component={BlogDetail} />} */}
+        </Switch>
       </div>
     </BrowserRouter>
   </Provider>

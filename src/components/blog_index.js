@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import BlogInstance from './blog_instance';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchBlogs } from '../actions/fetch_blogs';
 
 class BlogIndex extends Component {
@@ -22,6 +23,11 @@ class BlogIndex extends Component {
     render() {
         return (
             <div>
+                <div className='text-xs-right'>
+                    <Link className='btn btn-primary' to='/blog/new'>
+                        New Blog
+                    </Link>
+                </div>
                 <ul className='list-group'>
                     {this.renderBlogs()}
                 </ul>
