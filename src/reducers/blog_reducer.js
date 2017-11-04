@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { FETCH_BLOGS, CREATE_BLOG, FETCH_BLOG } from '../actions/index';
+import { FETCH_BLOGS, CREATE_BLOG, FETCH_BLOG, DELETE_BLOG } from '../actions/index';
 
 export default function(state = {}, action) {
     switch (action.type) {
@@ -17,7 +17,8 @@ export default function(state = {}, action) {
             
             // ES6 Syntax. {...Get existing State, [Define New Key]: Assign value}
             return { ...state, [action.payload.data.id]: action.payload.data};
-
+        case DELETE_BLOG:
+            return _.omit(state, action.payload);
         default:
             return state;
     }

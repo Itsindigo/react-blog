@@ -3,6 +3,7 @@ import axios from 'axios';
 export const FETCH_BLOGS = 'fetch_blogs';
 export const CREATE_BLOG = 'create_blog';
 export const FETCH_BLOG = 'get_blog';
+export const DELETE_BLOG = 'delete_blog';
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=MATTHEWBKEY'
 
@@ -32,5 +33,14 @@ export function fetchBlog(id) {
     return {
         type: FETCH_BLOG,
         payload: request
+    }
+}
+
+export function deleteBlog(id, callback) {
+    const request = axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`)
+        .then(() => callback())
+    return {
+        type: DELETE_BLOG,
+        payload: id
     }
 }
