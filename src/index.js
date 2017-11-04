@@ -9,6 +9,7 @@ import promise from 'redux-promise';
 import reducers from './reducers';
 import BlogIndex from './components/blog_index';
 import BlogNew from './components/blog_new';
+import BlogDetail from './components/blog_detail';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
@@ -19,8 +20,8 @@ ReactDOM.render(
         <h1>React Blog</h1>
         <Switch>
           <Route path='/blog/new' component={BlogNew} />
+          <Route path='/blog/:id' component={BlogDetail} />
           <Route path='/' component={BlogIndex} />
-          {/* {<Route path='/blog/:id' component={BlogDetail} />} */}
         </Switch>
       </div>
     </BrowserRouter>

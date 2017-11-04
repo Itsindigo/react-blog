@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import BlogInstance from './blog_instance';
+import BlogDetail from './blog_detail';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchBlogs } from '../actions/index';
@@ -14,7 +14,9 @@ class BlogIndex extends Component {
         return _.map(this.props.blogs, blog => {
             return (
                 <li className='list-group-item' key={blog.id}>
-                    {blog.title}
+                    <Link to={`/blog/${blog.id}`}>
+                        {blog.title}
+                    </Link>
                 </li>
             );
         });

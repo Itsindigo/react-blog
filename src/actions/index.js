@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const FETCH_BLOGS = 'fetch_blogs';
 export const CREATE_BLOG = 'create_blog';
+export const FETCH_BLOG = 'get_blog';
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=MATTHEWBKEY'
 
@@ -23,4 +24,13 @@ export function createBlog(values, callback) {
         type: CREATE_BLOG,
         payload: request
     };
+}
+
+export function fetchBlog(id) {
+    const request = axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`);
+
+    return {
+        type: FETCH_BLOG,
+        payload: request
+    }
 }
