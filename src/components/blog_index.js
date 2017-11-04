@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import BlogInstance from './blog_instance';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchBlogs } from '../actions/fetch_blogs';
+import { fetchBlogs } from '../actions/index';
 
 class BlogIndex extends Component {
     componentDidMount() {
